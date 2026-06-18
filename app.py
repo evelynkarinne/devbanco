@@ -73,5 +73,9 @@ def relatorio_departamentos():
 
     return resultado
 
+@app.route("/novo-colaborador")
+def novo_colaborador():
+    return render_template("novo_colaborador.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
