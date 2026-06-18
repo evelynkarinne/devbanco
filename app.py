@@ -79,10 +79,12 @@ def novo_colaborador():
     if request.method == "POST":
 
         colaborador = Colaborador(
+            matricula=request.form["matricula"],
             nome=request.form["nome"],
-            cidade=request.form["cidade"],
             salario=request.form["salario"],
-            email=request.form["email"]
+            email=request.form["email"],
+            endereco=request.form["endereco"],
+            codigo_dp=request.form["codigo_dp"]
         )
 
         db.session.add(colaborador)
@@ -90,7 +92,14 @@ def novo_colaborador():
 
         return redirect(url_for("listar_colaboradores"))
 
-    return render_template("novo_colaborador.html")
+    departamentos = Departamento.query.order_by(
+        Departamento.nome
+    ).all()
+
+    return render_template(
+        "novo_colaborador.html",
+        departamentos=departamentos
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)
