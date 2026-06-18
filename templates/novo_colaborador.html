@@ -1,20 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Empresa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+    <div class="container">
+    <form method="POST">
 
-<form method="POST">
+        <label>Nome</label>
+        <input type="text" name="nome">
+    
+        <label>Cidade</label>
+        <input type="text" name="cidade">
+    
+        <label>Salário</label>
+        <input type="number" step="0.01" name="salario">
+    
+        <label>Email</label>
+        <input type="email" name="email">
+    
+        <button type="submit">
+            Salvar
+        </button>
 
-    <label>Nome</label>
-    <input type="text" name="nome">
-
-    <label>Cidade</label>
-    <input type="text" name="cidade">
-
-    <label>Salário</label>
-    <input type="number" step="0.01" name="salario">
-
-    <label>Email</label>
-    <input type="email" name="email">
-
-    <button type="submit">
-        Salvar
-    </button>
-
-</form>
+    </form>
+    </div>
+</body>
+</html>
