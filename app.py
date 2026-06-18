@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from config import Config
 from models import db, Departamento, Colaborador
 from flask_sqlalchemy import SQLAlchemy
@@ -73,8 +73,23 @@ def relatorio_departamentos():
 
     return resultado
 
-@app.route("/novo-colaborador")
+@app.route("/novo-colaborador", methods=["GET", "POST"])
 def novo_colaborador():
+
+    if request.method == "POST":
+
+        colaborador = Colaborador(
+            nome=request.form["nome"],
+            cidade=request.form["cidade"],
+            salario=request.form["salario"],
+            email=request.form["email"]
+        )
+
+        db.session.add(colaborador)
+        db.session.commit()
+
+        return redirect(url_for("listar_colaboradores"))
+
     return render_template("novo_colaborador.html")
 
 if __name__ == "__main__":
