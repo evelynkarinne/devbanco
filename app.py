@@ -35,45 +35,5 @@ def listar_colaboradores():
         colaboradores=colaboradores
     )
 
-
-@app.route("/relatorio-colaboradores")
-def relatorio_colaboradores():
-
-    colaboradores = Colaborador.query.all()
-
-    resultado = []
-
-    for colaborador in colaboradores:
-        resultado.append({
-            "matricula": colaborador.matricula,
-            "nome": colaborador.nome,
-            "salario": float(colaborador.salario) if colaborador.salario else None,
-            "email": colaborador.email,
-            "endereco": colaborador.endereco,
-            "departamento": colaborador.departamento.nome,
-            "sigla_departamento": colaborador.departamento.sigla
-        })
-
-    return resultado
-
-
-@app.route("/relatorio-departamentos")
-def relatorio_departamentos():
-
-    departamentos = Departamento.query.all()
-
-    resultado = []
-
-    for departamento in departamentos:
-        resultado.append({
-            "codigo": departamento.codigo,
-            "nome": departamento.nome,
-            "sigla": departamento.sigla,
-            "total_colaboradores": len(departamento.colaboradores)
-        })
-
-    return resultado
-
-
 if __name__ == "__main__":
     app.run(debug=True)
