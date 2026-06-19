@@ -25,13 +25,13 @@
         <select name="codigo_dp" required><br>
             <option value="">
                 Selecione um departamento
-            </option>
+            </option><br>
             {% for departamento in departamentos %}
             <option value="{{ departamento.codigo }}">
                 {{ departamento.sigla }} - {{ departamento.nome }}
             </option>
             {% endfor %}
-        </select>
+        </select><br>
 
         <button type="submit"> Salvar </button><br>
 
