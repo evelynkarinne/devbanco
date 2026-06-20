@@ -81,7 +81,7 @@
                 <td>{{ colaborador.endereco }}</td>
                 <td>{{ colaborador.departamento.nome }}</td>
                 <td><a href="/editar-colaborador/{{ colaborador.matricula }}"> Editar </a></td>
-                <td><a href="/excluir-colaborador/{{ colaborador.matricula }}">Excluir </a></td>
+                <td><a href="/excluir-colaborador/{{ colaborador.matricula }}" onclick="return confirm('Deseja realmente excluir?')">Excluir </a></td>
             </tr>
             {% endfor %}
 
