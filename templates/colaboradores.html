@@ -68,6 +68,8 @@
             <th>E-mail</th>
             <th>Endereço</th>
             <th>Departamento</th>
+            <th>Editar</th>
+            <th>Excluir</th>
         </tr>
 
         {% for colaborador in colaboradores %}
@@ -78,6 +80,8 @@
                 <td>{{ colaborador.email }}</td>
                 <td>{{ colaborador.endereco }}</td>
                 <td>{{ colaborador.departamento.nome }}</td>
+                <td><a href="/editar-colaborador/{{ colaborador.matricula }}"> Editar </a></td>
+                <td></td>
             </tr>
             {% endfor %}
 
