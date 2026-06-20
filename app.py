@@ -131,5 +131,16 @@ def editar_colaborador(matricula):
         departamentos=departamentos
     )
 
+@app.route("/excluir-colaborador/<int:matricula>")
+def excluir_colaborador(matricula):
+
+    colaborador = Colaborador.query.get_or_404(matricula)
+
+    db.session.delete(colaborador)
+
+    db.session.commit()
+
+    return redirect(url_for("listar_colaboradores"))
+
 if __name__ == "__main__":
     app.run(debug=True)
