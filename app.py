@@ -101,5 +101,35 @@ def novo_colaborador():
         departamentos=departamentos
     )
 
+@app.route(
+    "/editar-colaborador/<int:matricula>",
+    methods=["GET", "POST"]
+)
+def editar_colaborador(matricula):
+
+    colaborador = Colaborador.query.get_or_404(matricula)
+
+    if request.method == "POST":
+
+        colaborador.nome = request.form["nome"]
+        colaborador.salario = request.form["salario"]
+        colaborador.email = request.form["email"]
+        colaborador.endereco = request.form["endereco"]
+        colaborador.codigo_dp = request.form["codigo_dp"]
+
+        db.session.commit()
+
+        return redirect(
+            url_for("listar_colaboradores")
+        )
+
+    departamentos = Departamento.query.all()
+
+    return render_template(
+        "editar_colaborador.html",
+        colaborador=colaborador,
+        departamentos=departamentos
+    )
+
 if __name__ == "__main__":
     app.run(debug=True)
