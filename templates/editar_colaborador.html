@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Colaborador</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+    <h2>Editar Colaborador</h2>
+    
+    <div class="container">
+    <form method="POST">
+
+        <label class="form-label">Matrícula</label><br>
+        <input type="number" name="matricula" value="{{ colaborador.matricula }}" required><br>
+        <label class="form-label">Nome</label><br>
+        <input type="text" name="nome" maxlength="100" value="{{ colaborador.nome }}" required><br>
+        <label class="form-label">Salário</label><br>
+        <input type="number" step="0.01" name="salario" value="{{ colaborador.salario }}"><br>
+        <label class="form-label">E-mail</label><br>
+        <input type="email" name="email" maxlength="150" value="{{ colaborador.email }}"><br>
+        <label class="form-label">Endereço</label><br>
+        <input type="text" name="endereco" maxlength="200" value="{{ colaborador.endereco }}"><br>
+        <label class="form-label">Departamento</label><br>
+        <select name="codigo_dp" required><br>
+            <option value="">
+                Selecione um departamento
+            </option><br>
+            {% for departamento in departamentos %}
+            <option value="{{ departamento.codigo }}" 
+              {% if departamento.codigo == colaborador.codigo_dp %} 
+              selected {% endif %} > {{ departamento.sigla }} - {{ departamento.nome }}>
+                {{ departamento.sigla }} - {{ departamento.nome }}
+            </option>
+            {% endfor %}
+        </select><br>
+
+        <button type="submit"> Editar </button><br>
+
+        <a href="/colaboradores" class="btn btn-secondary"> Cancelar </a>
+
+    </form>
+    </div>
+</body>
+</html>
