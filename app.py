@@ -62,10 +62,7 @@ def novo_colaborador():
         departamentos=departamentos
     )
 
-@app.route(
-    "/editar-colaborador/<int:matricula>",
-    methods=["GET", "POST"]
-)
+@app.route("/editar-colaborador/<int:matricula>", methods=["GET", "POST"])
 def editar_colaborador(matricula):
 
     colaborador = Colaborador.query.get_or_404(matricula)
