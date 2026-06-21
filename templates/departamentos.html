@@ -21,12 +21,12 @@
             <th>Qtd. Colaboradores</th>
         </tr>
 
-        {% for departamento in departamentos %}
+        {% for d in departamentos %}
             <tr>
-                <td>{{ departamento.codigo }}</td>
-                <td>{{ departamento.nome }}</td>
-                <td>{{ departamento.sigla }}</td>
-                <td>{{ departamento.colaboradores|length }}</td>
+                <td>{{ d.codigo }}</td>
+                <td>{{ d.nome }}</td>
+                <td>{{ d.sigla }}</td>
+                <td>{{ d.colaboradores|length }}</td>
             </tr>
         {% endfor %}
 
