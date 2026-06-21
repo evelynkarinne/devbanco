@@ -40,34 +40,18 @@ def novo_colaborador():
 
     if request.method == "POST":
 
-        try:
-
-            colaborador = Colaborador(
-                matricula=request.form["matricula"],
-                nome=request.form["nome"],
-                salario=request.form["salario"],
-                email=request.form["email"],
-                endereco=request.form["endereco"],
-                codigo_dp=request.form["codigo_dp"]
-            )
-
-            print("Salvando Colaborador")
-
-            db.session.add(colaborador)
-            db.session.commit()
-
-            print("Colaborador Salvo!")
-
-            return redirect(url_for("listar_colaboradores"))
-
-        except Exception as e:
-
-            db.session.rollback()
-
-            print("ERRO:")
-            print(e)
-
-            return f"Erro: {e}"
+        colaborador = Colaborador(
+            matricula=request.form["matricula"],
+            nome=request.form["nome"],
+            salario=request.form["salario"],
+            email=request.form["email"],
+            endereco=request.form["endereco"],
+            codigo_dp=request.form["codigo_dp"]
+        )
+        db.session.add(colaborador)
+        db.session.commit()
+        
+        return redirect(url_for("listar_colaboradores"))
 
     departamentos = Departamento.query.order_by(
         Departamento.nome
