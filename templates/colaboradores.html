@@ -72,18 +72,18 @@
             <th>Excluir</th>
         </tr>
 
-        {% for colaborador in colaboradores %}
+        {% for c in colaboradores %}
             <tr>
-                <td>{{ colaborador.matricula }}</td>
-                <td>{{ colaborador.nome }}</td>
-                <td>R$ {{ "%.2f"|format(colaborador.salario) }}</td>
-                <td>{{ colaborador.email }}</td>
-                <td>{{ colaborador.endereco }}</td>
-                <td>{{ colaborador.departamento.nome }}</td>
-                <td><a href="/editar-colaborador/{{ colaborador.matricula }}"> Editar </a></td>
-                <td><a href="/excluir-colaborador/{{ colaborador.matricula }}" onclick="return confirm('Deseja realmente excluir?')">Excluir </a></td>
+                <td>{{ c.matricula }}</td>
+                <td>{{ c.nome }}</td>
+                <td>R$ {{ "%.2f"|format(c.salario) }}</td>
+                <td>{{ c.email }}</td>
+                <td>{{ c.endereco }}</td>
+                <td>{{ c.departamento.nome }}</td>
+                <td><a href="/editar-colaborador/{{ c.matricula }}"> Editar </a></td>
+                <td><a href="/excluir-colaborador/{{ c.matricula }}" onclick="return confirm('Deseja realmente excluir?')">Excluir </a></td>
             </tr>
-            {% endfor %}
+        {% endfor %}
 
     </table>
 
